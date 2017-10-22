@@ -1,0 +1,228 @@
+/**
+* Anax Flat theme.
+*/
+@import url(modules.less);
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css);
+
+@navColor: #1e5799;
+@margin: 0 2% 0 2%;
+@marginTop: 2% 2% 0 2%;
+
+html, body {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  display: flex;
+  margin: @margin;
+  img {
+    flex-grow: 1;
+  }
+}
+
+.navbar {
+  //.column(12);
+  margin: @margin;
+  background-color: @navColor;
+  display: flex;
+  justify-content: center;
+  ul {
+    //.column(12);
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+  }
+  li {
+    flex-grow: 1;
+    //.column(2);
+  }
+
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+}
+
+.htdocs {
+  .wrapper {
+    //display: flex;
+    flex-direction: row;
+    margin: @margin;
+  }
+}
+
+.footer {
+  display: flex;
+  p {
+    flex-grow: 1;
+    text-align: center;
+  }
+}
+
+.report {
+  .wrapper {
+   // display: flex;
+    flex-direction: row;
+    width:50%;
+    margin: @margin;
+  }
+}
+
+.about {
+  .wrapper {
+   // display: flex;
+    flex-direction: row;
+    margin: @margin;
+  }
+}
+
+.right {
+  float: right;
+}
+
+.create, .update, .delete, .book, .create, .login, .editProfile, .profile, .viewUsers {
+  .wrapper {
+    // display: flex;
+    flex-direction: row;
+    margin: @margin;
+  }
+}
+
+.remserver {
+
+  .wrapper {
+   // display: flex;
+    flex-direction: row;
+    margin: @margin;
+  }
+
+  h1 {
+    border-bottom: 4px double #666;
+  }
+
+  h2 {
+    border-bottom: 1px solid #999;
+  }
+
+  h3 {
+    border-bottom: 1px solid #ccc;
+  }
+  code {
+    padding: 2px;
+    background-color: #eee;
+  }
+
+  pre {
+    background-color: #eee;
+    padding: 0.5em;
+    border-left: 2px solid #ccc;
+  }
+}
+
+.mainPost {
+//  display: flex;
+  flex-direction: row;
+  margin: @margin;
+}
+
+.postsAndComments {
+  .posts {
+    flex-direction: row;
+    margin: auto;
+    width: 70%;
+    h1 {
+        text-align: center;
+    }
+    p {
+        text-align: center;
+    }
+    img {
+        display: block;
+        margin: 0 auto;
+    }
+  }
+
+  .createComment {
+    flex-direction: row;
+    margin: auto;
+    width: 70%;
+  }
+  .comments {
+    flex-direction: row;
+    margin: auto;
+    width: 70%;
+    h5 {
+        text-align: center;
+    }
+    h6 {
+        text-align: center;
+    }
+    img {
+        display: block;
+        margin: 0 auto;
+    }
+  }
+
+.test {
+    border: 1px solid black;
+}
+
+  .commentcomments {
+      border: 1px solid black;
+      flex-direction: row;
+      margin: auto;
+      width: 70%;
+      h5 {
+          text-align: center;
+      }
+      h6 {
+          text-align: center;
+      }
+      img {
+          display: block;
+          margin: 0 auto;
+      }
+  }
+}
+
+label {
+  flex-direction: row;
+  margin: @margin;
+}
+input[type=text], select, input[type=email], input[type=date], input[type=password], input[type=number] {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  margin: @margin;
+  width: 96%;
+  padding: 12px 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  flex-direction: row;
+  margin: @marginTop;
+  width: 96%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}

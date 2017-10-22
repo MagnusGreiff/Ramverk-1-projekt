@@ -4,3 +4,4 @@
 .DS_Store
 memory::
 composer.lock
+config/database.php
