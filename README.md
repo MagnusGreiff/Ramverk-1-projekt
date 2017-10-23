@@ -25,7 +25,7 @@ Run the command: `composer update` to install all dependencies.
 Run the command: `make install`.
 
 #### Theme
-Do the following: ´cd theme´ && `npm install` && `make less-install`.
+Do the following: `cd theme` && `npm install` && `make less-install`.
 
 #### Database
 Add your own database.php file in /config.
