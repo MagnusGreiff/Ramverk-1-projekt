@@ -28,5 +28,4 @@ Run the command: `make install`.
 Do the following: `cd theme` && `npm install` && `make less-install`.
 
 #### Database
-Add your own database.php file in /config.
-Run the sql-file located in /sql,
+Add your own database.php file in /config and run the sql-file located in /sql,
