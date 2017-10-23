@@ -16,7 +16,7 @@ Short examples on how to download the source code.
 ## How to download and install own copy.
 
 #### Clone.
-Run the command: `git clone git@github.com:MagnusGreiff/Ramverk-1-projekt.git` in your website folder.
+Run the command: `git clome https://github.com/MagnusGreiff/Ramverk-1-projekt.git` your website folder.
 
 #### Composer.
 Run the command: `composer update` to install all dependencies.
