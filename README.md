@@ -29,3 +29,4 @@ Do the following: `cd theme` && `npm install` && `make less-install`.
 
 #### Database
 Add your own database.php file in /config.
+Run the sql-file located in /sql,
