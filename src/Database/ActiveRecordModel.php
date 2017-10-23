@@ -8,6 +8,8 @@ use \Anax\Database\Exception\ActiveRecordException;
 /**
  * An implementation of the Active Record pattern to be used as
  * base class for database driven models.
+ *
+ * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  */
 class ActiveRecordModel
 {
@@ -149,25 +151,25 @@ class ActiveRecordModel
 
 
 
-    public function findAllLimitOrderBy ($o, $n)
+    public function findAllLimitOrderBy($order, $number)
     {
         $this->checkDb();
         return $this->db->connect()
                         ->select()
                         ->from($this->tableName)
-                        ->orderBy($o)
-                        ->limit($n)
+                        ->orderBy($order)
+                        ->limit($number)
                         ->execute()
                         ->fetchAllClass(get_class($this));
     }
 
-    public function findAllLimit($n)
+    public function findAllLimit($number)
     {
         $this->checkDb();
         return $this->db->connect()
                         ->select()
                         ->from($this->tableName)
-                        ->limit($n)
+                        ->limit($number)
                         ->execute()
                         ->fetchAllClass(get_class($this));
     }

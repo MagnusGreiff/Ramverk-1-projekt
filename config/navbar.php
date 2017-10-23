@@ -8,7 +8,7 @@ return [
         "user" => [
             "start" => [
                 "text" => "Overview",
-                "route" => "overview"
+                "route" => ""
             ],
             "about" => [
                 "text" => "About",

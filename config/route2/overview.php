@@ -7,7 +7,7 @@ return [
         [
             "info" => "Overview",
             "requestMethod" => "get",
-            "path" => "overview",
+            "path" => "",
             "callable" => ["overviewController", "overview"]
         ]
     ]
