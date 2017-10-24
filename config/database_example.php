@@ -18,7 +18,7 @@ return [
     'dsn'            => "mysql:host=localhost;dbname=comments;",
     'username'       => "user",
     'password'       => "pass",
-    'driver_options' => [\PDO::MYSQL_ATTR_INIT_COMMAND => \"SET NAMES 'UTF8'\"],
+    'driver_options' => [\PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES UTF8"],
     'table_prefix'   => null,
     'fetch_mode'     => \PDO::FETCH_OBJ,
     'session_key'    => 'Anax\Database',
