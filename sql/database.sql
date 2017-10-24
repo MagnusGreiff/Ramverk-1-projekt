@@ -17,7 +17,7 @@ SET NAMES utf8;
 
 CREATE TABLE Posts (
   id        INT NOT NULL AUTO_INCREMENT,
-  posttitle VARCHAR(50),
+  posttitle VARCHAR(100),
   postname  VARCHAR(100),
   posttext  TEXT(2499),
 
@@ -64,19 +64,78 @@ CREATE TABLE Post2Cat (
 
 
 
-INSERT INTO Posts (posttitle, postname, posttext) VALUE ("some title", "admin@admin.com", "blablablalbvlalfldspofksdpofksdop"),
-  ("post2", "admin@admin.com", "some post about something random");
+INSERT INTO Posts (posttitle, postname, posttext) VALUE ("PHP explode function", "admin@admin.com", "<p>I want to let the user type in tags:</p>
+<p>windows linux &#8220;mac os x&#8221;</p>
+<p>and then split them up by white space but also recognizing &#8220;mac os x&#8221; as a whole word.</p>
+<p>Is this possible to combine the explode function with other functions for this?</p>
+<p>There has to be a way.</p>"),
+
+  ("Python way of printing: with 'format' or percent form?", "admin@admin.com", " <p>In Python there seem to be two different ways of generating formatted output:</p>
+
+<pre><code class='python'>user = 'Alex'
+number = 38746
+print('%s asked %d questions on stackoverflow.com' % (user, number))
+print('{0} asked {1} questions on stackoverflow.com'.format(user, number))
+</code></pre>
+<p>Is there one way to be preferred over the other? Are they equivalent, what is the difference? What form should be used, especially for Python3?</p>"),
+
+("MySQL - Operand should contain 1 column(s)", "admin@admin.com", " <p>While working on a system I&#8217;m creating, I attempted to use the following query in my project:</p>
+<pre><code class='mysql'>SELECT
+topics.id,
+topics.name,
+topics.post_count,
+topics.view_count,
+COUNT( posts.solved_post ) AS solved_post,
+(SELECT users.username AS posted_by,
+    users.id AS posted_by_id
+    FROM users
+    WHERE users.id = posts.posted_by)
+FROM topics
+LEFT OUTER JOIN posts ON posts.topic_id = topics.id
+WHERE topics.cat_id = :cat
+GROUP BY topics.id
+</code></pre>
+<p>&#8220;:cat&#8221; is bound by my PHP code as I&#8217;m using PDO. 2 is a valid value for &#8220;:cat&#8221;.</p>
+<p>That query though gives me an error: &#8220;#1241 - Operand should contain 1 column(s)&#8221;</p>
+<p>What stumps me is that I would think that this query would work no problem. Selecting columns, then selecting two more from another table, and continuing on from there. I just can&#8217;t figure out what the problem is.</p>
+<p>Is there a simple fix to this, or another way to write my query?</p>");
+
 INSERT INTO Comments (commenttext, idpost, postuser)
-  VALUE ("jfsdsjifdsjifdsjifdjifdsio", 1, "doe@doe.com"), ("jfkldsjflksdjklfsqq", 1, "doe@doe.com"),
-  ("fsdfsdf", 2, "admin@admin.com"), ("fjdsoifjiosd", 2, "admin@admin.com");
-INSERT INTO CommentComments (textcomment, idcommentcomment, postuser) VALUE ("hejsan men me", 1, "doe@doe.com"), ("men", 2, "admin@admin.com"), ("tjena", 2, "doe@doe.com"), ("jhejhejhejhejhejhejhejhejhejhej", 2, "admin@admin.com");
+  VALUE ("<p>You can use both .No one said % formatting expression is deprecated.However,as stated before the format method call is a tad more powerful. Also note that the % expressions are bit more concise and easier to code.Try them and see what suits you best</p>", 2, "mangegreiff@gmail.com"), ("<p>I would ask the user to enter the tags commas separated and explode with comma delimiter:</p>
+<pre><code class='php'>$string = 'windows, linux, mac os x';
+$pieces = explode(',', $string);
+</code></pre>
+<p>This is they way most tag system work anyway.</p>
+<p>otherwise you&#8217;ll need to construct a parser because explode cannot cope with what you want. Regex is an overkill in my opinion.</p>", 1, "doe@doe.com"), ("<p>Your subquery is selecting two columns, while you are using it to project one column (as part of the outer SELECT clause). You can only select one column from such a query in this context.</p>
+
+<p>Consider joining to the users table instead; this will give you more flexibility when selecting what columns you want from users.</p>
+
+<pre><code class='mysql'>SELECT
+topics.id,
+topics.name,
+topics.post_count,
+topics.view_count,
+COUNT( posts.solved_post ) AS solved_post,
+users.username AS posted_by,
+users.id AS posted_by_id
+
+FROM topics
+
+LEFT OUTER JOIN posts ON posts.topic_id = topics.id
+LEFT OUTER JOIN users ON users.id = posts.posted_by
+
+WHERE topics.cat_id = :cat
+GROUP BY topics.id
+</code></pre>", 3, "doe@doe.com");
+
+INSERT INTO CommentComments (textcomment, idcommentcomment, postuser) VALUE ("<p>It’s probably worth noting that logging module uses %-like syntax, so it may be preferred for consistency reasons.</p>", 1, "admin@admin.com"), ("<p>Thanks for the response. I'll fix my query, and mark you as the answer, but just for input, do you think there's a 'better' way to write my query than what I'm using now (but also disregarding the error in it)?</p>", 3, "admin@admin.com"), ("<p>Ah. Thank you for the edit on your original post. I will be sure to mark you as the answer when StackOverflow lets me. Thanks a lot! </p>", 3, "mangegreiff@gmail.com");
 
 
 INSERT INTO PostCategory (category)
-VALUES  ("SQL"), ("PHP");
+VALUES  ("SQL"), ("PHP"), ("PYTHON");
 
 INSERT INTO Post2Cat (postid, catid)
-VALUES (1,1), (2,2), (2,1);
+VALUES (1,2), (2,3), (3,1);
 
 
 
@@ -284,7 +343,7 @@ CREATE TABLE Users (
   `password`    VARCHAR(255)                       NOT NULL,
   `points`      INT DEFAULT '0'                            ,
   `permissions` VARCHAR(5) DEFAULT 'user',
-  `created`     DATETIME,
+  `created`     TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
   `updated`     DATETIME,
   `deleted`     DATETIME,
   `active`      DATETIME
