@@ -57,5 +57,11 @@ return [
             "path" => "deleteCommentComment/{id:digit}",
             "callable" => ["commentController", "deleteCommentComment"],
         ],
+        [
+            "info" => "Edit commentcomment",
+            "requestMethod" => "get|post",
+            "path" => "editCommentComment/{id:digit}",
+            "callable" => ["commentController", "editCommentComment"]
+        ]
     ],
 ];
